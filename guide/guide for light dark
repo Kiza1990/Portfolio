@@ -1,0 +1,90 @@
+within navbar - <button id="themeToggle" style="padding: 10px; margin: 10px;">🌙 Toggle Night Mode</button> 
+
+to go at bottom of page .html
+<script>
+    const toggleBtn = document.getElementById('themeToggle');
+    const logo = document.getElementById('logo');
+  
+    function applyTheme(theme) {
+      document.body.classList.toggle('dark-mode', theme === 'dark');
+      logo.src = theme === 'dark' ? './images/logo-dark.png' : './images/logo-light.png';
+    }
+  
+    toggleBtn.addEventListener('click', () => {
+      const newTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+      applyTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      applyTheme(savedTheme);
+    });
+  </script>
+
+
+for css
+/* === DARK MODE STYLES === */
+body.dark-mode {
+  background-image: none;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode p,
+body.dark-mode a,
+body.dark-mode .product-name,
+body.dark-mode .product-price {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode #navbar {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode #navbar a {
+  color: #ffffff;
+}
+
+body.dark-mode #navbar a:hover {
+  color: #d29952;
+  
+}
+
+body.dark-mode .menu {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode th {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode td {
+  background-color: #222;
+  color: #ddd;
+}
+
+body.dark-mode .footer__container {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .footer__link--items a {
+  color: #ffffff;
+}
+
+body.dark-mode .footer__link--items a:hover {
+  color: #d29952;
+}
+
+body.dark-mode .contact-form {
+  background-color: #1e1e1e;
+  color: #fff;
+  border-color: #444;
+}
+body.dark-mode .navimg {
+  filter: brightness(1.5) invert(1);
+}
